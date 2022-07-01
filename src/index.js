@@ -4,13 +4,14 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-import { applyMiddleware, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./modules";
 import middleware from "./middleware/counterMiddleware";
+import logger from "redux-logger";
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: [middleware],
+  middleware: [middleware, logger],
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
