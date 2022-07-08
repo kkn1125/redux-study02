@@ -8,6 +8,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./modules";
 import middleware from "./middleware/counterMiddleware";
 import logger from "redux-logger";
+import { BrowserRouter } from "react-router-dom";
 
 const store = configureStore({
   reducer: rootReducer,
@@ -17,9 +18,11 @@ const store = configureStore({
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

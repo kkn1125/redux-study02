@@ -1,20 +1,21 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getPosts } from "./apis/posts";
 import Counter from "./components/Counter";
 import { decrease, increase } from "./container/counter";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Page from "./components/Page";
 
 function App() {
   const number = useSelector((state) => state.counter);
   const dispatch = useDispatch();
-  const onIncrease = () => dispatch(increase());
-  const onDecrease = () => dispatch(decrease());
+
   return (
-    <div>
-      <Counter
-        number={number}
-        onIncrease={onIncrease}
-        onDecrease={onDecrease}
-      />
-    </div>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/:id' element={<Page />} />
+    </Routes>
   );
 }
 
